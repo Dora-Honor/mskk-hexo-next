@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://hexonext.dorahonor.me/sitemap.xml
