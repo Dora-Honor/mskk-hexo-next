@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hexonext.dorahonor.me","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Live2D Widget       English  特性  在网页中添加 Live2D 看板娘 轻量级，除 Live2D Cubism Core 外无其他运行时依赖 核心代码由 TypeScript 编写，易于集成   注：以上人物模型仅供展示之用，本仓库并不包含任何模型。 你也可以查看示例网页：  在 米米的博客 的左下角可查看效果 demo&#x2F;demo.html，展现基础功能 demo&#x2F;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="mskk&#39;s blog">
+<meta property="og:url" content="https://hexonext.dorahonor.me/live2d-widget/README.html">
+<meta property="og:site_name" content="mskk&#39;s blog">
+<meta property="og:description" content="Live2D Widget       English  特性  在网页中添加 Live2D 看板娘 轻量级，除 Live2D Cubism Core 外无其他运行时依赖 核心代码由 TypeScript 编写，易于集成   注：以上人物模型仅供展示之用，本仓库并不包含任何模型。 你也可以查看示例网页：  在 米米的博客 的左下角可查看效果 demo&#x2F;demo.html，展现基础功能 demo&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://forthebadge.com/images/badges/built-with-love.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/made-with-typescript.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/uses-css.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/contains-cat-gifs.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/powered-by-electricity.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/makes-people-smile.svg">
+<meta property="og:image" content="https://hexonext.dorahonor.me/live2d-widget/demo/screenshots/screenshot-2.png">
+<meta property="og:image" content="https://hexonext.dorahonor.me/live2d-widget/demo/screenshots/screenshot-3.png">
+<meta property="og:image" content="https://hexonext.dorahonor.me/live2d-widget/demo/screenshots/screenshot-1.png">
+<meta property="og:image" content="https://live.browserstack.com/images/opensource/browserstack-logo.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/jsdelivr/jsdelivr-media/master/default/svg/jsdelivr-logo-horizontal.svg">
+<meta property="article:published_time" content="2026-01-07T05:36:22.451Z">
+<meta property="article:modified_time" content="2026-01-07T05:36:22.451Z">
+<meta property="article:author" content="Dora Honor">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://forthebadge.com/images/badges/built-with-love.svg">
+
+
+<link rel="canonical" href="https://hexonext.dorahonor.me/live2d-widget/README">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://hexonext.dorahonor.me/live2d-widget/README.html","path":"live2d-widget/README.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | mskk's blog
+</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="dns-prefetch" href="https://vercel-waline.dorahonor.me/">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">mskk's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#live2d-widget"><span class="nav-number">1.</span> <span class="nav-text"> Live2D Widget</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text"> 特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text"> 使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text"> 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%BB%93%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text"> 模型仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91"><span class="nav-number">1.5.</span> <span class="nav-text"> 开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">1.6.</span> <span class="nav-text"> 部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-jsdelivr-cdn"><span class="nav-number">1.6.1.</span> <span class="nav-text"> 使用 jsDelivr CDN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-cloudflare-pages"><span class="nav-number">1.6.2.</span> <span class="nav-text"> 使用 Cloudflare Pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#self-host"><span class="nav-number">1.6.3.</span> <span class="nav-text"> Self-host</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%B8%A3%E8%B0%A2"><span class="nav-number">1.7.</span> <span class="nav-text"> 鸣谢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A"><span class="nav-number">1.8.</span> <span class="nav-text"> 更多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="nav-number">1.9.</span> <span class="nav-text"> 许可证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="nav-number">1.10.</span> <span class="nav-text"> 更新日志</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dora Honor"
+      src="/img/background/user.webp">
+  <p class="site-author-name" itemprop="name">Dora Honor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dora-Honor" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dora-Honor" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dora-Honor/dora-honor.github.io" title="源代码 → https:&#x2F;&#x2F;github.com&#x2F;Dora-Honor&#x2F;dora-honor.github.io" rel="noopener me" target="_blank"><i class="fab fa-git-alt fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor903@163.com" title="Email → mailto:dorahonor903@163.com" rel="noopener me" target="_blank"><i class="fas fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor@gmail.com" title="Gmail → mailto:dorahonor@gmail.com" rel="noopener me" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor903@outlook.com" title="Outlook → mailto:dorahonor903@outlook.com" rel="noopener me" target="_blank"><i class="fab fa-microsoft fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/dora_honor" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://qm.qq.com/q/uSLf4n32JW" title="QQ → https:&#x2F;&#x2F;qm.qq.com&#x2F;q&#x2F;uSLf4n32JW" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/@dorahonor_mskk" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;@dorahonor_mskk" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/68026760" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;68026760" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/dorahonor" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;dorahonor" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/63b56120000000002702a843" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;63b56120000000002702a843" rel="noopener me" target="_blank"><i class="iconfont icon-xiaohongshu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/1744954" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;1744954" rel="noopener me" target="_blank"><i class="iconfont icon-coolapk fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5635501226" title="微博 → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5635501226" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://x.com/dora_honor" title="X (Twitter) → https:&#x2F;&#x2F;x.com&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-x-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://bsky.app/profile/dora-honor.bsky.social" title="Bluesky → https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;dora-honor.bsky.social" rel="noopener me" target="_blank"><i class="fab fa-bluesky fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://threads.net/@dora_honor" title="Threads → https:&#x2F;&#x2F;threads.net&#x2F;@dora_honor" rel="noopener me" target="_blank"><i class="fab fa-threads fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/dora_honor" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/dora.honor.944" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;dora.honor.944" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://open.spotify.com/user/31tnk5f4als6u4r7kcg2mj2dqq4a" title="Spotify → https:&#x2F;&#x2F;open.spotify.com&#x2F;user&#x2F;31tnk5f4als6u4r7kcg2mj2dqq4a" rel="noopener me" target="_blank"><i class="fab fa-spotify fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=436313178" title="网易云音乐 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;436313178" rel="noopener me" target="_blank"><i class="iconfont icon-netease-cloud-music fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/dorahonor" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;dorahonor" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.miyoushe.com/ys/accountCenter/postList?id=295708491" title="米游社 → https:&#x2F;&#x2F;www.miyoushe.com&#x2F;ys&#x2F;accountCenter&#x2F;postList?id&#x3D;295708491" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hoyolab.com/accountCenter/postList?id=300847631" title="HoYoLAB → https:&#x2F;&#x2F;hoyolab.com&#x2F;accountCenter&#x2F;postList?id&#x3D;300847631" rel="noopener me" target="_blank"><i class="iconfont icon-hoyolab fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h1 id="live2d-widget"><a class="markdownIt-Anchor" href="#live2d-widget"></a> Live2D Widget</h1>
+<p><img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="" /><br />
+<img src="https://forthebadge.com/images/badges/made-with-typescript.svg" alt="" /><br />
+<img src="https://forthebadge.com/images/badges/uses-css.svg" alt="" /><br />
+<img src="https://forthebadge.com/images/badges/contains-cat-gifs.svg" alt="" /><br />
+<img src="https://forthebadge.com/images/badges/powered-by-electricity.svg" alt="" /><br />
+<img src="https://forthebadge.com/images/badges/makes-people-smile.svg" alt="" /></p>
+<p><a href="/live2d-widget/README.en">English</a></p>
+<h2 id="特性"><a class="markdownIt-Anchor" href="#特性"></a> 特性</h2>
+<ul>
+<li>在网页中添加 Live2D 看板娘</li>
+<li>轻量级，除 Live2D Cubism Core 外无其他运行时依赖</li>
+<li>核心代码由 TypeScript 编写，易于集成</li>
+</ul>
+<p><img src="demo/screenshots/screenshot-2.png" width="280"><img src="demo/screenshots/screenshot-3.png" width="280"><img src="demo/screenshots/screenshot-1.png" width="270"></p>
+<p><em>注：以上人物模型仅供展示之用，本仓库并不包含任何模型。</em></p>
+<p>你也可以查看示例网页：</p>
+<ul>
+<li>在 <a target="_blank" rel="noopener" href="https://zhangshuqiao.org">米米的博客</a> 的左下角可查看效果</li>
+<li><a target="_blank" rel="noopener" href="https://live2d-widget.pages.dev/demo/demo">demo/demo.html</a>，展现基础功能</li>
+<li><a target="_blank" rel="noopener" href="https://live2d-widget.pages.dev/demo/login">demo/login.html</a>，仿 NPM 的登陆界面</li>
+</ul>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 使用</h2>
+<p>如果你是小白，或者只需要最基础的功能，那么只用将这一行代码加入 html 页面的 <code>head</code> 或 <code>body</code> 中，即可加载看板娘：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0/dist/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>添加代码的位置取决于你的网站的构建方式。例如，如果你使用的是 <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>，那么需要在主题的模版文件中添加以上代码。对于用各种模版引擎生成的页面，修改方法类似。<br />
+如果网站启用了 PJAX，由于看板娘不必每页刷新，需要注意将该脚本放到 PJAX 刷新区域之外。</p>
+<p><strong>但是！我们强烈推荐自己进行配置，让看板娘更加适合你的网站！</strong><br />
+如果你有兴趣自己折腾的话，请看下面的详细说明。</p>
+<h2 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h2>
+<p>你可以对照 <code>dist/autoload.js</code> 的源码查看可选的配置项目。<code>autoload.js</code> 会自动加载两个文件：<code>waifu.css</code> 和 <code>waifu-tips.js</code>。<code>waifu-tips.js</code> 会创建 <code>initWidget</code> 函数，这就是加载看板娘的主函数。<code>initWidget</code> 函数接收一个 Object 类型的参数，作为看板娘的配置。以下是配置选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>waifuPath</code></td>
+<td><code>string</code></td>
+<td><code>https://fastly.jsdelivr.net/npm/live2d-widgets@1/dist/waifu-tips.json</code></td>
+<td>看板娘资源路径，可自行修改</td>
+</tr>
+<tr>
+<td><code>cdnPath</code></td>
+<td><code>string</code></td>
+<td><code>https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/</code></td>
+<td>CDN 路径</td>
+</tr>
+<tr>
+<td><code>cubism2Path</code></td>
+<td><code>string</code></td>
+<td><code>https://fastly.jsdelivr.net/npm/live2d-widgets@1/dist/live2d.min.js</code></td>
+<td>Cubism 2 Core 路径</td>
+</tr>
+<tr>
+<td><code>cubism5Path</code></td>
+<td><code>string</code></td>
+<td><code>https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js</code></td>
+<td>Cubism 5 Core 路径</td>
+</tr>
+<tr>
+<td><code>modelId</code></td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>默认模型 id</td>
+</tr>
+<tr>
+<td><code>tools</code></td>
+<td><code>string[]</code></td>
+<td>见 <code>autoload.js</code></td>
+<td>加载的小工具按钮</td>
+</tr>
+<tr>
+<td><code>drag</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>支持拖动看板娘</td>
+</tr>
+<tr>
+<td><code>logLevel</code></td>
+<td><code>string</code></td>
+<td><code>error</code></td>
+<td>日志等级，支持 <code>error</code>，<code>warn</code>，<code>info</code>，<code>trace</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="模型仓库"><a class="markdownIt-Anchor" href="#模型仓库"></a> 模型仓库</h2>
+<p>本仓库中并不包含任何模型，需要单独配置模型仓库，并通过 <code>cdnPath</code> 选项进行设置。<br />
+旧版本的 <code>initWidget</code> 函数支持 <code>apiPath</code> 参数，这要求用户自行搭建后端，可以参考 <a target="_blank" rel="noopener" href="https://github.com/fghrsh/live2d_api">live2d_api</a>。后端接口会对模型资源进行整合并动态生成 JSON 描述文件。自 1.0 版本起，相关功能已通过前端实现，因此不再需要专门的 <code>apiPath</code>，所有模型资源都可通过静态方式提供。只要存在 <code>model_list.json</code> 和模型对应的 <code>textures.cache</code>，即可支持换装等功能。</p>
+<h2 id="开发"><a class="markdownIt-Anchor" href="#开发"></a> 开发</h2>
+<p>如果以上「配置」部分提供的选项还不足以满足你的需求，那么你可以自己进行修改。本仓库的目录结构如下：</p>
+<ul>
+<li><code>src</code> 目录下包含了各个组件的 TypeScript 源代码，例如按钮和对话框等；</li>
+<li><code>build</code> 目录下包含了基于 <code>src</code> 中源代码构建后的文件（请不要直接修改！）；</li>
+<li><code>dist</code> 目录下包含了进一步打包后网页直接可用的文件，其中：
+<ul>
+<li><code>autoload.js</code> 用于自动加载其它资源，例如样式表等；</li>
+<li><code>waifu-tips.js</code> 是由 <code>build/waifu-tips.js</code> 自动打包生成的，不建议直接修改；</li>
+<li><code>waifu.css</code> 是看板娘的样式表；</li>
+<li><code>waifu-tips.json</code> 中定义了触发条件（<code>selector</code>，CSS 选择器）和触发时显示的文字（<code>text</code>）。<br />
+<code>waifu-tips.json</code> 中默认的 CSS 选择器规则是对 Hexo 的 <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">NexT 主题</a> 有效的，为了适用于你自己的网页，可能需要自行修改，或增加新内容。<br />
+<strong>警告：<code>waifu-tips.json</code> 中的内容可能不适合所有年龄段，或不宜在工作期间访问。在使用时，请自行确保它们是合适的。</strong></li>
+</ul>
+</li>
+</ul>
+<p>要在本地部署本项目的开发测试环境，你需要安装 Node.js 和 npm，然后执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/stevenjoezhang/live2d-widget.git</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>如果需要使用 Cubism 3 及更新的模型，请单独下载并解压 Cubism SDK for Web 到 <code>src</code> 目录下，例如 <code>src/CubismSdkForWeb-5-r.4</code>。受 Live2D 许可协议（包括 Live2D Proprietary Software License Agreement 和 Live2D Open Software License Agreement）限制，本项目无法包含 Cubism SDK for Web 的源码。<br />
+如果只需要使用 Cubism 2 版本的模型，可以跳过此步骤。本仓库使用的代码满足 Live2D 许可协议中 Redistributable Code 相关条款。<br />
+完成后，使用以下命令进行编译和打包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p><code>src</code> 目录中的 TypeScript 代码会被编译到 <code>build</code> 目录中，<code>build</code> 目录中的代码会被进一步打包到 <code>dist</code> 目录中。<br />
+为了能够兼容 Cubism 2 和 Cubism 3 及更新的模型，并减小代码体积，Cubism Core 及相关的代码会根据检测到的模型版本动态加载。</p>
+<h2 id="部署"><a class="markdownIt-Anchor" href="#部署"></a> 部署</h2>
+<p>在本地完成了修改后，你可以将修改后的项目部署在自己的服务器上，或者通过 CDN 加载。为了方便自定义有关内容，可以把这个仓库 Fork 一份，然后把修改后的内容通过 git push 到你的仓库中。</p>
+<h3 id="使用-jsdelivr-cdn"><a class="markdownIt-Anchor" href="#使用-jsdelivr-cdn"></a> 使用 jsDelivr CDN</h3>
+<p>如果要通过 jsDelivr 加载 Fork 后的仓库，使用方法对应地变为</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://fastly.jsdelivr.net/gh/username/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>将此处的 <code>username</code> 替换为你的 GitHub 用户名。为了使 CDN 的内容正常刷新，需要创建新的 git tag 并推送至 GitHub 仓库中，否则此处的 <code>@latest</code> 仍然指向更新前的文件。此外 CDN 本身存在缓存，因此改动可能需要一定的时间生效。</p>
+<h3 id="使用-cloudflare-pages"><a class="markdownIt-Anchor" href="#使用-cloudflare-pages"></a> 使用 Cloudflare Pages</h3>
+<p>也可以使用 Cloudflare Pages 来部署。在 Cloudflare Pages 中创建一个新的项目，选择你 Fork 的仓库。接下来，设置构建命令为 <code>npm run build</code>。完成后，Cloudflare Pages 会自动构建并部署你的项目。</p>
+<h3 id="self-host"><a class="markdownIt-Anchor" href="#self-host"></a> Self-host</h3>
+<p>你也可以直接把这些文件放到服务器上，而不是通过 CDN 加载。</p>
+<ul>
+<li>可以把修改后的代码仓库克隆到服务器上，或者通过 <code>ftp</code> 等方式将本地文件上传到服务器的网站的目录下；</li>
+<li>如果你是通过 Hexo 等工具部署的静态博客，请把本项目的代码放在博客源文件目录下（例如 <code>source</code> 目录）。重新部署博客时，相关文件就会自动上传到对应的路径下。为了避免这些文件被 Hexo 插件错误地修改，可能需要设置 <code>skip_render</code>。</li>
+</ul>
+<p>这样，整个项目就可以通过你的域名访问了。不妨试试能否正常地通过浏览器打开 <code>autoload.js</code> 和 <code>live2d.min.js</code> 等文件，并确认这些文件的内容是完整和正确的。<br />
+一切正常的话，接下来修改 <code>autoload.js</code> 中的常量 <code>live2d_path</code> 为 <code>dist</code> 目录的 URL 即可。比如说，如果你能够通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://example.com/path/to/live2d-widget/dist/live2d.min.js</span><br></pre></td></tr></table></figure>
+<p>访问到 <code>live2d.min.js</code>，那么就把 <code>live2d_path</code> 的值修改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://example.com/path/to/live2d-widget/dist/</span><br></pre></td></tr></table></figure>
+<p>路径末尾的 <code>/</code> 一定要加上。<br />
+完成后，在你要添加看板娘的界面加入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://example.com/path/to/live2d-widget/dist/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>就可以加载了。</p>
+<h2 id="鸣谢"><a class="markdownIt-Anchor" href="#鸣谢"></a> 鸣谢</h2>
+<a target="_blank" rel="noopener" href="https://www.browserstack.com/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" height="80" srcset="https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780">
+    <source media="(prefers-color-scheme: light)" height="80" srcset="https://live.browserstack.com/images/opensource/browserstack-logo.svg">
+    <img alt="BrowserStack Logo" height="80" src="https://live.browserstack.com/images/opensource/browserstack-logo.svg">
+  </picture>
+</a>
+<blockquote>
+<p>感谢 BrowserStack 容许我们在真实的浏览器中测试此项目。<br />
+Thanks to <a target="_blank" rel="noopener" href="https://www.browserstack.com/">BrowserStack</a> for providing the infrastructure that allows us to test in real browsers!</p>
+</blockquote>
+<a target="_blank" rel="noopener" href="https://www.jsdelivr.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" height="80" srcset="https://raw.githubusercontent.com/jsdelivr/jsdelivr-media/master/white/svg/jsdelivr-logo-horizontal.svg">
+    <source media="(prefers-color-scheme: light)" height="80" srcset="https://raw.githubusercontent.com/jsdelivr/jsdelivr-media/master/default/svg/jsdelivr-logo-horizontal.svg">
+    <img alt="jsDelivr Logo" height="80" src="https://raw.githubusercontent.com/jsdelivr/jsdelivr-media/master/default/svg/jsdelivr-logo-horizontal.svg">
+  </picture>
+</a>
+<blockquote>
+<p>感谢 jsDelivr 提供的 CDN 服务。<br />
+Thanks jsDelivr for providing public CDN service.</p>
+</blockquote>
+<p>感谢 fghrsh 提供的 API 服务。</p>
+<p>感谢 <a target="_blank" rel="noopener" href="https://hitokoto.cn">一言</a> 提供的语句接口。</p>
+<p>点击看板娘的纸飞机按钮时，会出现一个彩蛋，这来自于 <a target="_blank" rel="noopener" href="http://www.websiteasteroids.com">WebsiteAsteroids</a>。</p>
+<h2 id="更多"><a class="markdownIt-Anchor" href="#更多"></a> 更多</h2>
+<p>代码自这篇博文魔改而来：<br />
+<a target="_blank" rel="noopener" href="https://www.fghrsh.net/post/123.html">https://www.fghrsh.net/post/123.html</a></p>
+<p>更多内容可以参考：<br />
+<a target="_blank" rel="noopener" href="https://nocilol.me/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02">https://nocilol.me/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02</a><br />
+<a target="_blank" rel="noopener" href="https://github.com/guansss/pixi-live2d-display">https://github.com/guansss/pixi-live2d-display</a></p>
+<p>更多模型仓库：<br />
+<a target="_blank" rel="noopener" href="https://github.com/zenghongtu/live2d-model-assets">https://github.com/zenghongtu/live2d-model-assets</a></p>
+<p>除此之外，还有桌面版本：<br />
+<a target="_blank" rel="noopener" href="https://github.com/TSKI433/hime-display">https://github.com/TSKI433/hime-display</a><br />
+<a target="_blank" rel="noopener" href="https://github.com/amorist/platelet">https://github.com/amorist/platelet</a><br />
+<a target="_blank" rel="noopener" href="https://github.com/akiroz/Live2D-Widget">https://github.com/akiroz/Live2D-Widget</a><br />
+<a target="_blank" rel="noopener" href="https://github.com/zenghongtu/PPet">https://github.com/zenghongtu/PPet</a><br />
+<a target="_blank" rel="noopener" href="https://github.com/LikeNeko/L2dPetForMac">https://github.com/LikeNeko/L2dPetForMac</a></p>
+<p>以及 Wallpaper Engine：<br />
+<a target="_blank" rel="noopener" href="https://github.com/guansss/nep-live2d">https://github.com/guansss/nep-live2d</a></p>
+<p>Live2D 官方网站：<br />
+<a target="_blank" rel="noopener" href="https://www.live2d.com/en/">https://www.live2d.com/en/</a></p>
+<h2 id="许可证"><a class="markdownIt-Anchor" href="#许可证"></a> 许可证</h2>
+<p>本仓库并不包含任何模型，用作展示的所有 Live2D 模型、图片、动作数据等版权均属于其原作者，仅供研究学习，不得用于商业用途。</p>
+<p>本仓库的代码（不包括受 Live2D Proprietary Software License 和 Live2D Open Software License 约束的部分）基于 GNU General Public License v3 协议开源<br />
+<a target="_blank" rel="noopener" href="http://www.gnu.org/licenses/gpl-3.0.html">http://www.gnu.org/licenses/gpl-3.0.html</a></p>
+<p>Live2D 相关代码的使用请遵守对应的许可：</p>
+<p>Live2D Cubism SDK 2.1 的许可证：<br />
+<a target="_blank" rel="noopener" href="https://docs.google.com/document/d/10tz1WrycskzGGBOhrAfGiTSsgmyFy8D9yHx9r_PsN8I/">Live2D SDK License Agreement (Public)</a></p>
+<p>Live2D Cubism SDK 5 的许可证：<br />
+Live2D Cubism Core は Live2D Proprietary Software License で提供しています。<br />
+<a target="_blank" rel="noopener" href="https://www.live2d.com/eula/live2d-proprietary-software-license-agreement_cn.html">https://www.live2d.com/eula/live2d-proprietary-software-license-agreement_cn.html</a><br />
+Live2D Cubism Components は Live2D Open Software License で提供しています。<br />
+<a target="_blank" rel="noopener" href="https://www.live2d.com/eula/live2d-open-software-license-agreement_cn.html">https://www.live2d.com/eula/live2d-open-software-license-agreement_cn.html</a></p>
+<h2 id="更新日志"><a class="markdownIt-Anchor" href="#更新日志"></a> 更新日志</h2>
+<p>2020年1月1日起，本项目不再依赖于 jQuery。</p>
+<p>2022年11月1日起，本项目不再需要用户单独加载 Font Awesome。</p>
+
+      </div>
+      
+      
+      
+    </div>
+
+    
+    
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Dora Honor</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://vercel-waline.dorahonor.me/","cssUrl":"https://unpkg.com/@waline/client@v3/dist/waline.css","commentCount":true,"pageview":false,"locale":{"placeholder":"说点什么吧（昵称和邮箱为必填项。为了你能及时收到相关回复的邮件通知，请确保邮箱的正确性！）"},"reaction":true,"emoji":["https://unpkg.com/@waline/emojis@1.1.0/weibo","https://unpkg.com/@waline/emojis@1.1.0/alus","https://unpkg.com/@waline/emojis@1.1.0/bilibili","https://unpkg.com/@waline/emojis@1.1.0/qq","https://unpkg.com/@waline/emojis@1.1.0/tieba","https://unpkg.com/@waline/emojis@1.1.0/tw-emoji","https://emoji.shojo.cn/bili/webp/乖巧宝宝","https://emoji.shojo.cn/bili/webp/乖巧宝宝%20清凉一夏","https://emoji.shojo.cn/bili/webp/原神","https://emoji.shojo.cn/bili/webp/原神-须弥","https://emoji.shojo.cn/bili/webp/原神·巡林奇遇","https://emoji.shojo.cn/bili/webp/崩坏：星穹铁道","https://emoji.shojo.cn/bili/webp/崩坏3","https://emoji.shojo.cn/bili/webp/崩坏3·光辉矢愿","https://emoji.shojo.cn/bili/webp/崩坏3·天穹流星","https://emoji.shojo.cn/bili/webp/崩坏3·终焉归始","https://emoji.shojo.cn/bili/webp/崩坏3·雷鸣彻空","https://emoji.shojo.cn/bili/webp/崩坏学园2","https://emoji.shojo.cn/bili/webp/明日方舟","https://emoji.shojo.cn/bili/webp/明日方舟音律联觉","https://emoji.shojo.cn/bili/webp/明日方舟·音律联觉-灯下定影","https://emoji.shojo.cn/bili/webp/我的世界","https://emoji.shojo.cn/bili/webp/罗小黑战记","https://emoji.shojo.cn/bili/webp/2233娘"],"requiredMeta":["nick","mail"],"el":"#waline","comment":true,"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/live2d-widget/README.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<body>
+  <script src="../live2d-widget/dist/autoload.js"></script>
+</body>
+</html>
+</body>
+</html>

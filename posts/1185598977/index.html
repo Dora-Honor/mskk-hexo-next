@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hexonext.dorahonor.me","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="前言 平时在浏览许多前辈们的博客时，总能看到有不少前辈们的站点角落有引人注目的看板娘。我就在想，「如果自己的博客也能有自己喜欢的角色来彰显个性就好了」。 相信许多朋友们都和我一样，也想给自己的博客加上喜欢的角色作为看板娘吧？ 众所周知，许多带看板娘的博客，其看板娘基本都用的是 Live2D 模型和引擎。Live2D 引擎使用 2.5D 设计和建模，其最大的特色是只要对角色各部位进行设计和建模，导">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何给博客添加自定义 Live2D 看板娘">
+<meta property="og:url" content="https://hexonext.dorahonor.me/posts/1185598977/index.html">
+<meta property="og:site_name" content="mskk&#39;s blog">
+<meta property="og:description" content="前言 平时在浏览许多前辈们的博客时，总能看到有不少前辈们的站点角落有引人注目的看板娘。我就在想，「如果自己的博客也能有自己喜欢的角色来彰显个性就好了」。 相信许多朋友们都和我一样，也想给自己的博客加上喜欢的角色作为看板娘吧？ 众所周知，许多带看板娘的博客，其看板娘基本都用的是 Live2D 模型和引擎。Live2D 引擎使用 2.5D 设计和建模，其最大的特色是只要对角色各部位进行设计和建模，导">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/01.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/02.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/03.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/04.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/05.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/06.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/07.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/08.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/09.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/10.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/11.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/12.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/13.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/14.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/15.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/16.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/17.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/18.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/19.webp">
+<meta property="article:published_time" content="2025-12-20T18:33:14.000Z">
+<meta property="article:modified_time" content="2026-01-07T05:36:22.294Z">
+<meta property="article:author" content="Dora Honor">
+<meta property="article:tag" content="Live2D">
+<meta property="article:tag" content="个性化">
+<meta property="article:tag" content="折腾">
+<meta property="article:tag" content="看板娘">
+<meta property="article:tag" content="经验总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/01.webp">
+
+
+<link rel="canonical" href="https://hexonext.dorahonor.me/posts/1185598977/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hexonext.dorahonor.me/posts/1185598977/","path":"posts/1185598977/","title":"如何给博客添加自定义 Live2D 看板娘"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>如何给博客添加自定义 Live2D 看板娘 | mskk's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="dns-prefetch" href="https://vercel-waline.dorahonor.me/">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">mskk's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text"> 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text"> 所需条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text"> 准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%BC%95%E5%85%A5%E6%89%80%E9%9C%80%E7%BB%84%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text"> 下载和引入所需组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-live2d-%E4%BE%9D%E8%B5%96%E7%BB%84%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text"> 下载 Live2D 依赖组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5-live2d-%E4%BE%9D%E8%B5%96%E7%BB%84%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text"> 引入 Live2D 依赖组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%80%89%E4%BC%98%E5%8C%96%E6%A8%A1%E5%9E%8B%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C"><span class="nav-number">4.3.</span> <span class="nav-text"> 【可选】优化模型显示效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E9%80%89%E4%B8%8B%E8%BD%BD-%E8%A7%A3%E5%8C%85-%E5%BC%95%E5%85%A5-live2d-%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text"> 【可选】下载、解包、引入 Live2D 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-live2d-%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.1.</span> <span class="nav-text"> 下载 Live2D 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E5%AF%BC%E5%87%BA-live2dviewerex-%E5%88%9B%E6%84%8F%E5%B7%A5%E5%9D%8A%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.2.</span> <span class="nav-text"> 【如果需要】导出 Live2DViewerEX 创意工坊模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8C%85"><span class="nav-number">5.2.1.</span> <span class="nav-text"> 解包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8C%85%E4%BB%8E-7-zip-%E6%8F%90%E5%8F%96%E7%9A%84-lpk-%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.2.2.</span> <span class="nav-text"> 解包从 7-Zip 提取的 LPK 模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E8%A7%A3%E5%8E%8B%E5%87%BA%E7%9A%84-live2d-%E6%A8%A1%E5%9E%8B%E6%94%BE%E8%87%B3%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">5.3.</span> <span class="nav-text"> 将解压出的 Live2D 模型放至项目文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E5%BC%95%E5%85%A5-live2d-%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.4.</span> <span class="nav-text"> 在配置文件中引入 Live2D 模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%95%88%E6%9E%9C"><span class="nav-number">6.</span> <span class="nav-text"> 测试效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E4%BE%8B%E5%A6%82-github-pages-netlify-vercel"><span class="nav-number">7.</span> <span class="nav-text"> 在服务器上部署（例如 GitHub Pages、Netlify、Vercel）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-number">8.</span> <span class="nav-text"> 题外话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%E5%92%8C%E6%B3%A8%E9%87%8A"><span class="nav-number">9.</span> <span class="nav-text"> 参考资料和注释</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dora Honor"
+      src="/img/background/user.webp">
+  <p class="site-author-name" itemprop="name">Dora Honor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dora-Honor" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dora-Honor" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dora-Honor/dora-honor.github.io" title="源代码 → https:&#x2F;&#x2F;github.com&#x2F;Dora-Honor&#x2F;dora-honor.github.io" rel="noopener me" target="_blank"><i class="fab fa-git-alt fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor903@163.com" title="Email → mailto:dorahonor903@163.com" rel="noopener me" target="_blank"><i class="fas fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor@gmail.com" title="Gmail → mailto:dorahonor@gmail.com" rel="noopener me" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor903@outlook.com" title="Outlook → mailto:dorahonor903@outlook.com" rel="noopener me" target="_blank"><i class="fab fa-microsoft fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/dora_honor" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://qm.qq.com/q/uSLf4n32JW" title="QQ → https:&#x2F;&#x2F;qm.qq.com&#x2F;q&#x2F;uSLf4n32JW" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/@dorahonor_mskk" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;@dorahonor_mskk" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/68026760" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;68026760" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/dorahonor" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;dorahonor" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/63b56120000000002702a843" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;63b56120000000002702a843" rel="noopener me" target="_blank"><i class="iconfont icon-xiaohongshu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/1744954" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;1744954" rel="noopener me" target="_blank"><i class="iconfont icon-coolapk fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5635501226" title="微博 → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5635501226" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://x.com/dora_honor" title="X (Twitter) → https:&#x2F;&#x2F;x.com&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-x-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://bsky.app/profile/dora-honor.bsky.social" title="Bluesky → https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;dora-honor.bsky.social" rel="noopener me" target="_blank"><i class="fab fa-bluesky fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://threads.net/@dora_honor" title="Threads → https:&#x2F;&#x2F;threads.net&#x2F;@dora_honor" rel="noopener me" target="_blank"><i class="fab fa-threads fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/dora_honor" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/dora.honor.944" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;dora.honor.944" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://open.spotify.com/user/31tnk5f4als6u4r7kcg2mj2dqq4a" title="Spotify → https:&#x2F;&#x2F;open.spotify.com&#x2F;user&#x2F;31tnk5f4als6u4r7kcg2mj2dqq4a" rel="noopener me" target="_blank"><i class="fab fa-spotify fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=436313178" title="网易云音乐 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;436313178" rel="noopener me" target="_blank"><i class="iconfont icon-netease-cloud-music fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/dorahonor" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;dorahonor" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.miyoushe.com/ys/accountCenter/postList?id=295708491" title="米游社 → https:&#x2F;&#x2F;www.miyoushe.com&#x2F;ys&#x2F;accountCenter&#x2F;postList?id&#x3D;295708491" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hoyolab.com/accountCenter/postList?id=300847631" title="HoYoLAB → https:&#x2F;&#x2F;hoyolab.com&#x2F;accountCenter&#x2F;postList?id&#x3D;300847631" rel="noopener me" target="_blank"><i class="iconfont icon-hoyolab fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hexonext.dorahonor.me/posts/1185598977/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/background/user.webp">
+      <meta itemprop="name" content="Dora Honor">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mskk's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="如何给博客添加自定义 Live2D 看板娘 | mskk's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何给博客添加自定义 Live2D 看板娘
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-21 02:33:14" itemprop="dateCreated datePublished" datetime="2025-12-21T02:33:14+08:00">2025-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-07 13:36:22" itemprop="dateModified" datetime="2026-01-07T13:36:22+08:00">2026-01-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%99%E7%A8%8B/%E7%BE%8E%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">美化</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/1185598977/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/posts/1185598977/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>平时在浏览许多前辈们的博客时，总能看到有不少前辈们的站点角落有引人注目的看板娘。我就在想，「如果自己的博客也能有自己喜欢的角色来彰显个性就好了」。</p>
+<p>相信许多朋友们都和我一样，也想给自己的博客加上喜欢的角色作为看板娘吧？</p>
+<p>众所周知，许多带看板娘的博客，其看板娘基本都用的是 <strong>Live2D</strong> 模型和引擎。Live2D 引擎使用 2.5D 设计和建模，其最大的特色是只要对角色各部位进行设计和建模，导出模型在查看器或 Live2D 引擎就能让角色动起来，<strong>无需花费大量时间画每一帧</strong><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。</p>
+<p>为此，我们需要下载所需的 Live2D 引擎组件，进行添加 Live2D 看板娘，以及添加自定义 Live2D 看板娘角色（可选）。</p>
+<h2 id="所需条件"><a class="markdownIt-Anchor" href="#所需条件"></a> 所需条件</h2>
+<ul>
+<li>你的博客项目已建立好（修改前<strong>建议备份</strong>）</li>
+<li>熟悉 Node.js、NPM、Yarn、PNPM、Git、VS Code 等运行时、包管理器、软件的使用，且已安装</li>
+<li>丰富的认知和思考能力</li>
+<li>足够的电脑性能</li>
+</ul>
+<h2 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h2>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p>以我的 <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 框架和 <a target="_blank" rel="noopener" href="https://butterfly.js.org">Butterfly</a> 主题为例。</p>
+</div></div>
+<div class="callout" data-callout="caution">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">Caution</div>
+</div>
+<div class="callout-content"><p>其他主题或框架的部分方法可能有不同，具体请参考对应的文档说明。</p>
+</div></div><h2 id="下载和引入所需组件"><a class="markdownIt-Anchor" href="#下载和引入所需组件"></a> 下载和引入所需组件</h2>
+<h3 id="下载-live2d-依赖组件"><a class="markdownIt-Anchor" href="#下载-live2d-依赖组件"></a> 下载 Live2D 依赖组件</h3>
+<p>进入 <a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget">这个 Live2D 依赖组件的 GitHub 仓库</a> 找到该依赖。</p>
+<p>在页面选择【Code】—【Download ZIP】进行下载。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/01.webp" alt="" /></p>
+<p>将依赖解压到 <code>你的工作目录\source\live2d-widget</code> 目录，如果 <code>source</code> 下没有 <code>live2d-widget</code> 目录，解压时会自动创建。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/02.webp" alt="" /><br />
+<img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/03.webp" alt="" /></p>
+
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">Tip</div>
+</div>
+<div class="callout-content"><p>你也可以在 Git Bash 或其他终端使用 <code>git clone</code> 命令来下载到本地。</p>
+</div></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/stevenjoezhang/live2d-widget</span><br><span class="line"><span class="comment"># 你也可以在链接后指定克隆的目录。</span></span><br><span class="line"><span class="comment"># git clone https://github.com/stevenjoezhang/live2d-widget folder/live2d-widget</span></span><br></pre></td></tr></table></figure>
+<h3 id="引入-live2d-依赖组件"><a class="markdownIt-Anchor" href="#引入-live2d-依赖组件"></a> 引入 Live2D 依赖组件</h3>
+<p>在你的工作目录的根目录找到 <code>_config.butterfly.yml</code> 配置文件并打开。</p>
+
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">Tip</div>
+</div>
+<div class="callout-content"><p>推荐用 VS Code 打开你的工作目录，在左侧资源管理器中操作代码文件，使用更方便。</p>
+</div></div>
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p>对于同为 <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 框架的其他主题，主题配置文件一样为 <code>_config.theme.yml</code> 格式。例如，NexT 主题为 <code>_config.next.yml</code>。</p>
+</div></div><p>找到 <code>inject</code> 下的 <code>bottom</code> 字段，按照注释中的格式填入 <code>autoload.js</code> 所在路径。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Inject</span></span><br><span class="line"><span class="comment"># Insert the code to head (before &#x27;&lt;/head&gt;&#x27; tag) and the bottom (before &#x27;&lt;/body&gt;&#x27; tag)</span></span><br><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="comment"># - &lt;link rel=&quot;stylesheet&quot; href=&quot;/xxx.css&quot;&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="comment"># - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">src=&quot;/live2d-widget/dist/autoload.js&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>打开 <code>source</code> 里的 <code>live2d-widget\autoload.js</code>，修改 <code>const live2d_path</code> 字段参数为 <code>/live2d-widget/dist/</code> 并保存。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Recommended to use absolute path for live2d_path parameter</span></span><br><span class="line"><span class="comment">// live2d_path 参数建议使用绝对路径</span></span><br><span class="line"><span class="keyword">const</span> live2d_path = <span class="string">&#x27;/live2d-widget/dist/&#x27;</span>;</span><br><span class="line"><span class="comment">// const live2d_path = &#x27;/dist/&#x27;;</span></span><br></pre></td></tr></table></figure>
+<h3 id="可选优化模型显示效果"><a class="markdownIt-Anchor" href="#可选优化模型显示效果"></a> 【可选】优化模型显示效果</h3>
+<p>打开 <code>source</code> 里的 <code>live2d-widget\autoload.js</code>。</p>
+<p>由于手机屏幕尺寸有限，个人建议禁用手机端加载。将 <code>if (screen.width &lt; 768) return;</code> 字段取消注释。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// If you are concerned about display issues on mobile devices, you can use screen.width to determine whether to load</span></span><br><span class="line"><span class="comment">// 如果担心手机上显示效果不佳，可以根据屏幕宽度来判断是否加载</span></span><br><span class="line"><span class="keyword">if</span> (screen.<span class="property">width</span> &lt; <span class="number">768</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<p>更多说明，请参考 <a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget">仓库</a> 的 <code>README.md</code> 自述文件。</p>
+<h2 id="可选下载-解包-引入-live2d-模型"><a class="markdownIt-Anchor" href="#可选下载-解包-引入-live2d-模型"></a> 【可选】下载、解包、引入 Live2D 模型</h2>
+
+<div class="callout" data-callout="warning">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">Warning</div>
+</div>
+<div class="callout-content"><p>使用模型前，请<strong>仔细阅读</strong>并<strong>务必遵守</strong>相应的注意事项。对于因不当使用而产生的纠纷，本人概不负责。</p>
+</div></div>
+<div class="callout" data-callout="caution">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">Caution</div>
+</div>
+<div class="callout-content"><p>并非所有模型都能 100% 兼容。</p>
+</div></div><h3 id="下载-live2d-模型"><a class="markdownIt-Anchor" href="#下载-live2d-模型"></a> 下载 Live2D 模型</h3>
+<p>在各类站点下载你想要的 Live2D 模型。推荐几个 GitHub 仓库：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Eikanya/Live2d-model"><code>Eikanya/Live2d-model</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xiazeyu/live2d-widget-models"><code>xiazeyu/live2d-widget-models</code></a></li>
+</ul>
+<h3 id="如果需要导出-live2dviewerex-创意工坊模型"><a class="markdownIt-Anchor" href="#如果需要导出-live2dviewerex-创意工坊模型"></a> 【如果需要】导出 Live2DViewerEX 创意工坊模型</h3>
+
+<div class="callout" data-callout="caution">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">Caution</div>
+</div>
+<div class="callout-content"><p>请确保 Steam 和 Live2DViewerEX 均已安装，并且 Steam 已经启动。</p>
+</div></div><p>在 Steam 库找到 Live2DViewerEX，选择【启动】，在弹出的对话框中选择【启动 Live2DViewerEX】—【开始游戏】。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/04.webp" alt="" /></p>
+<p>在任务栏找到 Live2DViewerEX 图标，双击打开界面，找到并单击右侧的【批量导出】按钮。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/05.webp" alt="" /><br />
+<img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/06.webp" alt="" /></p>
+<p>选择你所需导出的模型，完成后单击【确认】，找到所需导出的路径，单击【选择文件夹】。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/07.webp" alt="" /><br />
+<img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/08.webp" alt="" /></p>
+<p>稍后会自动打开所在文件夹。</p>
+<h4 id="解包"><a class="markdownIt-Anchor" href="#解包"></a> 解包</h4>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p>建议使用 <a target="_blank" rel="noopener" href="https://7zip.org">7-Zip</a> 对在 Live2DViewerEX 导出的 <code>*.wpk</code> 包进行解压。</p>
+</div></div><p>选中全部 <code>*.wpk</code> 包，右键单击选中的文件，在弹出的快捷菜单中选择【显示更多选项】—【7-Zip】——【解压到 “\*”】。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/09.webp" alt="" /><br />
+<img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/10.webp" alt="" /></p>
+
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">Tip</div>
+</div>
+<div class="callout-content"><p>对于 Windows 10 及以下版本，或将 Windows 11 右键菜单的「更多选项」设为默认显示状态下，则在快捷菜单中选择【7-Zip】——【解压到 “\*”】。</p>
+</div></div><h4 id="解包从-7-zip-提取的-lpk-模型"><a class="markdownIt-Anchor" href="#解包从-7-zip-提取的-lpk-模型"></a> 解包从 7-Zip 提取的 LPK 模型</h4>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p>推荐使用工具：<a target="_blank" rel="noopener" href="https://github.com/oovm/live2d-unpacker"><code>oovm/live2d-unpacker</code></a></p>
+</div></div><p>在 <a target="_blank" rel="noopener" href="https://github.com/oovm/live2d-unpacker/releases/tag/v0.0.0">Releases</a> 页找到对应平台版本，并解压到合适的目录。</p>
+<p>进入工具解压的目录，运行根目录下的 <code>lpk-unpack.exe</code>。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/11.webp" alt="" /></p>
+<p>在程序界面单击【选择文件夹】，找到解压的各 LPK 模型共存的根目录，单击【选择文件夹】。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/12.webp" alt="" /><br />
+<img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/13.webp" alt="" /></p>
+<p>程序会自动搜索 LPK 模型，全选并选择【解压选中文件】。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/14.webp" alt="" /></p>
+<p>如果解压成功，在各模型编号下找到 <code>character</code> 文件夹，内部会有 <code>character-costume.model3.json</code> 文件以打开 Live2D 模型。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/15.webp" alt="" /></p>
+<h3 id="将解压出的-live2d-模型放至项目文件夹"><a class="markdownIt-Anchor" href="#将解压出的-live2d-模型放至项目文件夹"></a> 将解压出的 Live2D 模型放至项目文件夹</h3>
+
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">Tip</div>
+</div>
+<div class="callout-content"><p>为了便于区分，强烈建议将其中解压出的 <code>character</code> 文件夹重命名为角色的英文名。角色英文名可查阅相应 wiki。</p>
+</div></div><p>在 <code>你的工作目录\source\live2d-widget\dist</code> 中新建一个 <code>model</code> 文件夹，将重命名好的已被解包的模型文件夹复制进去。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/16.webp" alt="" /></p>
+<h3 id="在配置文件中引入-live2d-模型"><a class="markdownIt-Anchor" href="#在配置文件中引入-live2d-模型"></a> 在配置文件中引入 Live2D 模型</h3>
+<p>在 <code>你的工作目录\source\live2d-widget\dist</code> 中找到 <code>waifu-tips.json</code> 文件并打开。</p>
+<p>在 <code>models</code> 字段按标记语法填入模型信息。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;models&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Furina&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;/live2d-widget/dist/model/Furina/Furina.model3.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;站在你面前的，就是枫丹人人皆知的大明星——芙宁娜哦！&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HuTao&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;/live2d-widget/dist/model/HuTao/character-costume.model3.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;唷，找本堂主有何贵干呀？嗯？你不知道吗，往生堂第七十七代堂主就是我胡桃啦！&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HuTao2&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;/live2d-widget/dist/model/HuTao2/character-costume.model3.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;唷，找本堂主有何贵干呀？嗯？你不知道吗，往生堂第七十七代堂主就是我胡桃啦！&quot;</span> </span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Elysia&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;/live2d-widget/dist/model/Elysia/character-costume.model3.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你已知晓了我的过去，作为交换，我想见证你的「未来」。&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Firefly&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;/live2d-widget/dist/model/Firefly/character-costume.model3.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;嗨，又见面啦……我的意思，很高兴见到你。和往常一样，叫我「流萤」吧。&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Cyrene&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;/live2d-widget/dist/model/Cyrene/character-costume.model3.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;这是命运的邂逅吗，还是……久别重逢呢？真让人心跳加速呀，那……就像初遇时那样，再一次呼唤我「昔涟」，好吗？&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Potion-Maker/Pio&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/Potion-Maker/Pio/index.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;来自 Potion Maker 的 Pio 酱 ~&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Potion-Maker/Tia&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/Potion-Maker/Tia/index.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;来自 Potion Maker 的 Tia 酱 ~&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HyperdimensionNeptunia&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/neptune_classic/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepnep/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/neptune_santa/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepmaid/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepswim/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/noir_classic/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/noir/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/noir_santa/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/noireswim/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/blanc_classic/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/blanc_normal/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/blanc_swimwear/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/vert_classic/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/vert_normal/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/vert_swimwear/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepgear/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepgear_extra/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepgearswim/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/histoire/index.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/histoirenohover&quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Nep! Nep! 超次元游戏：海王星 系列&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Hiyori&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://fastly.jsdelivr.net/gh/Live2D/CubismWebSamples/Samples/Resources/Hiyori/Hiyori.model3.json&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;是 Hiyori 哦 ~&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>字段解释：</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段说明</th>
+<th>参数值规范</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;name&quot;</code></td>
+<td>角色名，用英文描述</td>
+<td><code>&quot;character&quot;,</code>，使用英文半角逗号分隔</td>
+</tr>
+<tr>
+<td><code>&quot;paths&quot;</code></td>
+<td><code>*.json</code> 模型配置文件路径</td>
+<td>使用中括号包围，如有多个则使用英文半角逗号分隔。对于网络路径，直接填写链接；对于本地路径，填写所在绝对路径，例如 <code>/live2d-widget/dist/model/characters/config.model3.json</code></td>
+</tr>
+<tr>
+<td><code>&quot;message&quot;</code></td>
+<td>切换角色时的消息</td>
+<td><code>&quot;角色的台词&quot;</code>，根据自己喜好或对应 wiki 填入即可，如有多个则使用英文半角逗号进行分隔</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p>最后四个为原本自带的网络 Live2D 模型。<br />
+加载顺序和 <code>waifu-tips.json</code> 中的顺序一致。</p>
+</div></div><p>填写完成后，保存 <code>waifu-tips.json</code> 文件。</p>
+<h2 id="测试效果"><a class="markdownIt-Anchor" href="#测试效果"></a> 测试效果</h2>
+<p>开启 VS Code 的终端，执行命令开启预览。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo server</span><br><span class="line"><span class="comment"># 或者直接使用 hexo server</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/17.webp" alt="" /></p>
+<p>待终端出现 <code>localhost</code> 地址后，按住 <code>Ctrl</code> 并单击打开链接查看预览。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/18.webp" alt="" /></p>
+<p>如果没有问题，关闭页面，回到 VS Code 的终端，按 <code>Ctrl-C</code> 停止预览服务器。</p>
+<h2 id="在服务器上部署例如-github-pages-netlify-vercel"><a class="markdownIt-Anchor" href="#在服务器上部署例如-github-pages-netlify-vercel"></a> 在服务器上部署（例如 GitHub Pages、Netlify、Vercel）</h2>
+<p>此步略。</p>
+<h2 id="题外话"><a class="markdownIt-Anchor" href="#题外话"></a> 题外话</h2>
+<ul>
+<li>展示 Live2D 模型需要一定的性能，尽量使用高性能独显。如果你的笔记本电脑有独显，建议你在设置中将浏览器使用显卡设置为「高性能」，避免集显性能不足导致的卡顿。</li>
+<li>最好控制模型体积，尽量不选特效太丰富的模型。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251221/19.webp" alt="" /></p>
+<h2 id="参考资料和注释"><a class="markdownIt-Anchor" href="#参考资料和注释"></a> 参考资料和注释</h2>
+<ul>
+<li>stevenjoezhang/live2d-widget: 把萌萌哒的看板娘抱回家 (ノ≧∇≦)ノ | Live2D widget for web platform. <a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget">https://github.com/stevenjoezhang/live2d-widget</a></li>
+<li>oovm/live2d-unpacker: 批量解包 Live2dViewerEx 加密的 LPK 文件. <a target="_blank" rel="noopener" href="https://github.com/oovm/live2d-unpacker">https://github.com/oovm/live2d-unpacker</a></li>
+<li>创意工坊上传器 - Live2DViewerEX 文档. 导出物品. <a target="_blank" rel="noopener" href="https://live2d.pavostudio.com/doc/zh-cn/exstudio/workshop-uploader/#_3">https://live2d.pavostudio.com/doc/zh-cn/exstudio/workshop-uploader/#_3</a></li>
+</ul>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Live2D - 维基百科，自由的百科全书. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Live2D">https://zh.wikipedia.org/wiki/Live2D</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%98%E8%85%BE/" rel="tag"># 折腾</a>
+              <a href="/tags/Live2D/" rel="tag"># Live2D</a>
+              <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" rel="tag"># 经验总结</a>
+              <a href="/tags/%E7%9C%8B%E6%9D%BF%E5%A8%98/" rel="tag"># 看板娘</a>
+              <a href="/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/" rel="tag"># 个性化</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2563639847/" rel="prev" title="如何解决华硕天选 5 Pro 屏幕亮度、对比度忽高忽低问题">
+                  <i class="fa fa-angle-left"></i> 如何解决华硕天选 5 Pro 屏幕亮度、对比度忽高忽低问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/1243066710/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Dora Honor</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://vercel-waline.dorahonor.me/","cssUrl":"https://unpkg.com/@waline/client@v3/dist/waline.css","commentCount":true,"pageview":false,"locale":{"placeholder":"说点什么吧（昵称和邮箱为必填项。为了你能及时收到相关回复的邮件通知，请确保邮箱的正确性！）"},"reaction":true,"emoji":["https://unpkg.com/@waline/emojis@1.1.0/weibo","https://unpkg.com/@waline/emojis@1.1.0/alus","https://unpkg.com/@waline/emojis@1.1.0/bilibili","https://unpkg.com/@waline/emojis@1.1.0/qq","https://unpkg.com/@waline/emojis@1.1.0/tieba","https://unpkg.com/@waline/emojis@1.1.0/tw-emoji","https://emoji.shojo.cn/bili/webp/乖巧宝宝","https://emoji.shojo.cn/bili/webp/乖巧宝宝%20清凉一夏","https://emoji.shojo.cn/bili/webp/原神","https://emoji.shojo.cn/bili/webp/原神-须弥","https://emoji.shojo.cn/bili/webp/原神·巡林奇遇","https://emoji.shojo.cn/bili/webp/崩坏：星穹铁道","https://emoji.shojo.cn/bili/webp/崩坏3","https://emoji.shojo.cn/bili/webp/崩坏3·光辉矢愿","https://emoji.shojo.cn/bili/webp/崩坏3·天穹流星","https://emoji.shojo.cn/bili/webp/崩坏3·终焉归始","https://emoji.shojo.cn/bili/webp/崩坏3·雷鸣彻空","https://emoji.shojo.cn/bili/webp/崩坏学园2","https://emoji.shojo.cn/bili/webp/明日方舟","https://emoji.shojo.cn/bili/webp/明日方舟音律联觉","https://emoji.shojo.cn/bili/webp/明日方舟·音律联觉-灯下定影","https://emoji.shojo.cn/bili/webp/我的世界","https://emoji.shojo.cn/bili/webp/罗小黑战记","https://emoji.shojo.cn/bili/webp/2233娘"],"requiredMeta":["nick","mail"],"el":"#waline","comment":true,"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/posts/1185598977/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<body>
+  <script src="../live2d-widget/dist/autoload.js"></script>
+</body>
+</html>
+</body>
+</html>

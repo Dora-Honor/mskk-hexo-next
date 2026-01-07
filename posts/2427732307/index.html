@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hexonext.dorahonor.me","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="前言 最近在研究一件事——就是把下载好的字体文件放入 &#x2F;source&#x2F;fonts&#x2F; 文件夹中，如何通过撰写 CSS 样式文件来引入？ 相信不少人都像我一样，想让自己的博客页面更有自己的个性，于是选择了生态丰富的 Hexo 框架和相对好看的 Butterfly 主题。但是，在构建过程中，难免会遇到一些麻烦。  准备工作 以我下载好的多字重 MiSans 字体和 Google Fonts 的 Not">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录一次在 Hexo + Butterfly 中引入本地字体的经验">
+<meta property="og:url" content="https://hexonext.dorahonor.me/posts/2427732307/index.html">
+<meta property="og:site_name" content="mskk&#39;s blog">
+<meta property="og:description" content="前言 最近在研究一件事——就是把下载好的字体文件放入 &#x2F;source&#x2F;fonts&#x2F; 文件夹中，如何通过撰写 CSS 样式文件来引入？ 相信不少人都像我一样，想让自己的博客页面更有自己的个性，于是选择了生态丰富的 Hexo 框架和相对好看的 Butterfly 主题。但是，在构建过程中，难免会遇到一些麻烦。  准备工作 以我下载好的多字重 MiSans 字体和 Google Fonts 的 Not">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/01.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/gf1.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/gf2.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/gf3.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/gf4.webp">
+<meta property="article:published_time" content="2025-11-10T18:30:07.000Z">
+<meta property="article:modified_time" content="2026-01-07T05:36:22.294Z">
+<meta property="article:author" content="Dora Honor">
+<meta property="article:tag" content="GitHub Pages">
+<meta property="article:tag" content="踩坑记录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/01.png">
+
+
+<link rel="canonical" href="https://hexonext.dorahonor.me/posts/2427732307/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hexonext.dorahonor.me/posts/2427732307/","path":"posts/2427732307/","title":"记录一次在 Hexo + Butterfly 中引入本地字体的经验"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>记录一次在 Hexo + Butterfly 中引入本地字体的经验 | mskk's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="dns-prefetch" href="https://vercel-waline.dorahonor.me/">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">mskk's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text"> 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text"> 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-misans-%E5%AD%97%E4%BD%93"><span class="nav-number">2.1.</span> <span class="nav-text"> 下载 MiSans 字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5-google-fonts"><span class="nav-number">2.2.</span> <span class="nav-text"> 导入 Google Fonts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%A7%8B"><span class="nav-number">3.</span> <span class="nav-text"> 正式开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-css-%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text"> 创建 CSS 样式文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5-css-%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text"> 引入 CSS 样式文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AD%97%E4%BD%93%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.3.</span> <span class="nav-text"> 修改字体样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%A0%B7%E5%BC%8F%E6%98%AF%E5%90%A6%E7%94%9F%E6%95%88"><span class="nav-number">4.</span> <span class="nav-text"> 测试样式是否生效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="nav-number">5.</span> <span class="nav-text"> 在服务器部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">6.</span> <span class="nav-text"> 注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-number">7.</span> <span class="nav-text"> 题外话</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%B8%80%E6%AC%A1%E6%80%A7%E5%BC%95%E7%94%A8%E5%A4%9A%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-css-%E6%A0%B7%E5%BC%8F"><span class="nav-number">7.1.</span> <span class="nav-text"> 如何一次性引用多个自定义 CSS 样式？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text"> 参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dora Honor"
+      src="/img/background/user.webp">
+  <p class="site-author-name" itemprop="name">Dora Honor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dora-Honor" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dora-Honor" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dora-Honor/dora-honor.github.io" title="源代码 → https:&#x2F;&#x2F;github.com&#x2F;Dora-Honor&#x2F;dora-honor.github.io" rel="noopener me" target="_blank"><i class="fab fa-git-alt fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor903@163.com" title="Email → mailto:dorahonor903@163.com" rel="noopener me" target="_blank"><i class="fas fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor@gmail.com" title="Gmail → mailto:dorahonor@gmail.com" rel="noopener me" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dorahonor903@outlook.com" title="Outlook → mailto:dorahonor903@outlook.com" rel="noopener me" target="_blank"><i class="fab fa-microsoft fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/dora_honor" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://qm.qq.com/q/uSLf4n32JW" title="QQ → https:&#x2F;&#x2F;qm.qq.com&#x2F;q&#x2F;uSLf4n32JW" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/@dorahonor_mskk" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;@dorahonor_mskk" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/68026760" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;68026760" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/dorahonor" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;dorahonor" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/63b56120000000002702a843" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;63b56120000000002702a843" rel="noopener me" target="_blank"><i class="iconfont icon-xiaohongshu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/1744954" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;1744954" rel="noopener me" target="_blank"><i class="iconfont icon-coolapk fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5635501226" title="微博 → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5635501226" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://x.com/dora_honor" title="X (Twitter) → https:&#x2F;&#x2F;x.com&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-x-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://bsky.app/profile/dora-honor.bsky.social" title="Bluesky → https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;dora-honor.bsky.social" rel="noopener me" target="_blank"><i class="fab fa-bluesky fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://threads.net/@dora_honor" title="Threads → https:&#x2F;&#x2F;threads.net&#x2F;@dora_honor" rel="noopener me" target="_blank"><i class="fab fa-threads fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/dora_honor" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;dora_honor" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/dora.honor.944" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;dora.honor.944" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://open.spotify.com/user/31tnk5f4als6u4r7kcg2mj2dqq4a" title="Spotify → https:&#x2F;&#x2F;open.spotify.com&#x2F;user&#x2F;31tnk5f4als6u4r7kcg2mj2dqq4a" rel="noopener me" target="_blank"><i class="fab fa-spotify fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=436313178" title="网易云音乐 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;436313178" rel="noopener me" target="_blank"><i class="iconfont icon-netease-cloud-music fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/dorahonor" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;dorahonor" rel="noopener me" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.miyoushe.com/ys/accountCenter/postList?id=295708491" title="米游社 → https:&#x2F;&#x2F;www.miyoushe.com&#x2F;ys&#x2F;accountCenter&#x2F;postList?id&#x3D;295708491" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hoyolab.com/accountCenter/postList?id=300847631" title="HoYoLAB → https:&#x2F;&#x2F;hoyolab.com&#x2F;accountCenter&#x2F;postList?id&#x3D;300847631" rel="noopener me" target="_blank"><i class="iconfont icon-hoyolab fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hexonext.dorahonor.me/posts/2427732307/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/background/user.webp">
+      <meta itemprop="name" content="Dora Honor">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mskk's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="记录一次在 Hexo + Butterfly 中引入本地字体的经验 | mskk's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          记录一次在 Hexo + Butterfly 中引入本地字体的经验
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-11-11 02:30:07" itemprop="dateCreated datePublished" datetime="2025-11-11T02:30:07+08:00">2025-11-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-07 13:36:22" itemprop="dateModified" datetime="2026-01-07T13:36:22+08:00">2026-01-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">踩坑记录</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">经验总结</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/2427732307/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/posts/2427732307/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>最近在研究一件事——就是把下载好的字体文件放入 <code>/source/fonts/</code> 文件夹中，如何通过撰写 CSS 样式文件来引入？</p>
+<p>相信不少人都像我一样，想让自己的博客页面更有自己的个性，于是选择了生态丰富的 Hexo 框架和相对好看的 Butterfly 主题。但是，在构建过程中，难免会遇到一些麻烦。</p>
+<h2 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h2>
+<p>以我下载好的多字重 MiSans 字体和 Google Fonts 的 Noto Sans<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>/Serif<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> SC/TC/HK/JP/KR、Roboto、Roboto Slab、Roboto Mono 在线字体为例。</p>
+<h3 id="下载-misans-字体"><a class="markdownIt-Anchor" href="#下载-misans-字体"></a> <a target="_blank" rel="noopener" href="https://hyperos.mi.com/font/download">下载 MiSans 字体</a></h3>
+<p>先在 <code>/source/</code> 里创建 <code>fonts</code> 文件夹，把所需 <code>*.woff</code>、<code>*.woff2</code> 格式字体复制进去。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/01.png" alt="MiSans" /></p>
+<h3 id="导入-google-fonts"><a class="markdownIt-Anchor" href="#导入-google-fonts"></a> 导入 Google Fonts</h3>
+<p>进入 <a target="_blank" rel="noopener" href="https://fonts.google.com/">Google Fonts 官网</a>。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/gf1.webp" alt="" /></p>
+<p>搜索上述字体，对所有字体都选择右上角的【Get font】加入购物车。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/gf2.webp" alt="" /></p>
+<p>单击页面右上角的购物车按钮，选择右侧的【Get embed code】。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/gf3.webp" alt="" /></p>
+<p>在 Web 栏中选择 <code>@import</code> 单选框，在第一个代码框中将 <code>&lt;style&gt;</code> 和 <code>&lt;/style&gt;</code> 内的链接复制出来。</p>
+<p><img src="https://raw.githubusercontent.com/Dora-Honor/image-hosting/refs/heads/main/images/251111/gf4.webp" alt="" /></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(<span class="string">&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100..900&amp;family=Noto+Sans+JP:wght@100..900&amp;family=Noto+Sans+KR:wght@100..900&amp;family=Noto+Sans+SC:wght@100..900&amp;family=Noto+Sans+TC:wght@100..900&amp;family=Noto+Serif+HK:wght@200..900&amp;family=Noto+Serif+JP:wght@200..900&amp;family=Noto+Serif+KR:wght@200..900&amp;family=Noto+Serif+SC:wght@200..900&amp;family=Noto+Serif+TC:wght@200..900&amp;family=Roboto+Mono:ital,wght@0,100..700;1,100..700&amp;family=Roboto+Slab:wght@100..900&amp;family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="正式开始"><a class="markdownIt-Anchor" href="#正式开始"></a> 正式开始</h2>
+<h3 id="创建-css-样式文件"><a class="markdownIt-Anchor" href="#创建-css-样式文件"></a> 创建 CSS 样式文件</h3>
+<p>用 VS Code 创建一个 CSS 样式文件，保存在 <code>/source/css/</code> 下。 下面以 <code>fonts.css</code> 文件名为例。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(<span class="string">&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100..900&amp;family=Noto+Sans+JP:wght@100..900&amp;family=Noto+Sans+KR:wght@100..900&amp;family=Noto+Sans+SC:wght@100..900&amp;family=Noto+Sans+TC:wght@100..900&amp;family=Noto+Serif+HK:wght@200..900&amp;family=Noto+Serif+JP:wght@200..900&amp;family=Noto+Serif+KR:wght@200..900&amp;family=Noto+Serif+SC:wght@200..900&amp;family=Noto+Serif+TC:wght@200..900&amp;family=Roboto+Mono:ital,wght@0,100..700;1,100..700&amp;family=Roboto+Slab:wght@100..900&amp;family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">100</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-Thin&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Thin.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Thin.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">200</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-ExtraLight&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-ExtraLight.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-ExtraLight.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">300</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-Light&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Light.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Light.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">400</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-Normal&quot;</span>), <span class="built_in">local</span>(<span class="string">&quot;MiSans&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Normal.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Normal.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">500</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-Medium&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Medium.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Medium.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">600</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-SemiBold&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-SemiBold.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-SemiBold.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">700</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-Bold&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Bold.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Bold.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">800</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-Heavy&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Heavy.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Heavy.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;MiSans&quot;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">900</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;MiSans-Demibold&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Demibold.woff2&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>),</span><br><span class="line">         <span class="built_in">url</span>(<span class="string">&quot;../fonts/MiSans-Demibold.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="引入-css-样式文件"><a class="markdownIt-Anchor" href="#引入-css-样式文件"></a> 引入 CSS 样式文件</h3>
+<p>在项目根目录找到 <code>_config.butterfly.yml</code> 文件并打开，找到 <code>inject</code> 注释开头的那行，如下所示。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Inject</span></span><br><span class="line"><span class="comment"># Insert the code to head (before &#x27;&lt;/head&gt;&#x27; tag) and the bottom (before &#x27;&lt;/body&gt;&#x27; tag)</span></span><br><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="comment"># - &lt;link rel=&quot;stylesheet&quot; href=&quot;/xxx.css&quot;&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="comment"># - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>head</code> 处输入 <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/fonts.css&gt;</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Inject</span></span><br><span class="line"><span class="comment"># Insert the code to head (before &#x27;&lt;/head&gt;&#x27; tag) and the bottom (before &#x27;&lt;/body&gt;&#x27; tag)</span></span><br><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="comment"># - &lt;link rel=&quot;stylesheet&quot; href=&quot;/xxx.css&quot;&gt;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;/css/fonts.css&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="comment"># - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改字体样式"><a class="markdownIt-Anchor" href="#修改字体样式"></a> 修改字体样式</h3>
+<p>在项目根目录找到 <code>_config.butterfly.yml</code> 文件并打开，找到 <code>Global font settings</code> 注释开头的那行，如下所示。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Global font settings</span></span><br><span class="line"><span class="comment"># Don&#x27;t modify the following settings unless you know how they work</span></span><br><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">global_font_size:</span></span><br><span class="line">  <span class="attr">code_font_size:</span></span><br><span class="line">  <span class="attr">font_family:</span></span><br><span class="line">  <span class="attr">code_font_family:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for the site title and site subtitle</span></span><br><span class="line"><span class="attr">blog_title_font:</span></span><br><span class="line">  <span class="attr">font_link:</span></span><br><span class="line">  <span class="attr">font_family:</span></span><br></pre></td></tr></table></figure>
+<p>将参数设为如下值。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Global font settings</span></span><br><span class="line"><span class="comment"># Don&#x27;t modify the following settings unless you know how they work</span></span><br><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">global_font_size:</span> <span class="string">16px</span></span><br><span class="line">  <span class="attr">code_font_size:</span> <span class="string">12px</span></span><br><span class="line">  <span class="attr">font_family:</span> <span class="string">MiSans,</span> <span class="string">Roboto,</span> <span class="string">&quot;Noto Sans SC&quot;</span><span class="string">,</span> <span class="string">&quot;PingFang SC&quot;</span><span class="string">,</span> <span class="string">-apple-system,</span> <span class="string">&quot;Microsoft Yahei&quot;</span><span class="string">,</span> <span class="string">&quot;WenQuanYi Micro Hei&quot;</span><span class="string">,</span> <span class="string">&quot;ST Heiti&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Sans TC&quot;</span><span class="string">,</span> <span class="string">&quot;PingFang TC&quot;</span><span class="string">,</span> <span class="string">&quot;Microsoft Jhenghei&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Sans HK&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Sans JP&quot;</span><span class="string">,</span> <span class="string">Hiragino,</span> <span class="string">Osaka,</span> <span class="string">&quot;Yu Gothic&quot;</span><span class="string">,</span> <span class="string">Meiryo,</span> <span class="string">&quot;MS Mincho&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Sans KR&quot;</span><span class="string">,</span> <span class="string">&quot;Apple Gothic&quot;</span><span class="string">,</span> <span class="string">Seoul,</span> <span class="string">&quot;Malgun Gothic&quot;</span><span class="string">,</span> <span class="string">Dotum,</span> <span class="string">sans-serif,</span> <span class="string">&quot;Roboto Slab&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Serif SC&quot;</span><span class="string">,</span> <span class="string">SimSun,</span> <span class="string">&quot;Noto Serif TC&quot;</span><span class="string">,</span> <span class="string">MingLiu,</span> <span class="string">&quot;Noto Serif HK&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Serif JP&quot;</span><span class="string">,</span> <span class="string">&quot;Yu Mincho&quot;</span><span class="string">,</span> <span class="string">&quot;MS Mincho&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Serif KR&quot;</span><span class="string">,</span> <span class="string">&quot;PC Myungjo&quot;</span><span class="string">,</span> <span class="string">&quot;Shin Myungjo Neue&quot;</span><span class="string">,</span> <span class="string">Batang,</span> <span class="string">serif,</span> <span class="string">&quot;Inter&quot;</span><span class="string">,</span> <span class="string">&#x27;Quicksand&#x27;</span><span class="string">,</span> <span class="string">&#x27;Nimbus Roman No9 L&#x27;</span><span class="string">,</span> <span class="string">ui-sans-serif,</span> <span class="string">system-ui,</span> <span class="string">sans-serif,</span> <span class="string">&quot;Noto Color Emoji&quot;</span><span class="string">,</span> <span class="string">&quot;Apple Color Emoji&quot;</span><span class="string">,</span> <span class="string">&quot;Segoe UI Emoji&quot;</span><span class="string">,</span> <span class="string">&quot;Segoe UI Symbol&quot;</span></span><br><span class="line">  <span class="attr">code_font_family:</span> <span class="string">Consolas,</span> <span class="string">&quot;Roboto Mono&quot;</span><span class="string">,</span> <span class="string">&quot;Monaco&quot;</span><span class="string">,</span> <span class="string">&quot;Andale Mono&quot;</span><span class="string">,</span> <span class="string">&quot;Ubuntu Mono&quot;</span><span class="string">,</span> <span class="string">monospace</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for the site title and site subtitle</span></span><br><span class="line"><span class="attr">blog_title_font:</span></span><br><span class="line">  <span class="attr">font_link:</span></span><br><span class="line">  <span class="attr">font_family:</span> <span class="string">MiSans,</span> <span class="string">Roboto,</span> <span class="string">&quot;Noto Sans SC&quot;</span><span class="string">,</span> <span class="string">&quot;PingFang SC&quot;</span><span class="string">,</span> <span class="string">-apple-system,</span> <span class="string">&quot;Microsoft Yahei&quot;</span><span class="string">,</span> <span class="string">&quot;WenQuanYi Micro Hei&quot;</span><span class="string">,</span> <span class="string">&quot;ST Heiti&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Sans TC&quot;</span><span class="string">,</span> <span class="string">&quot;PingFang TC&quot;</span><span class="string">,</span> <span class="string">&quot;Microsoft Jhenghei&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Sans HK&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Sans JP&quot;</span><span class="string">,</span> <span class="string">Hiragino,</span> <span class="string">Osaka,</span> <span class="string">&quot;Yu Gothic&quot;</span><span class="string">,</span> <span class="string">Meiryo,</span> <span class="string">&quot;MS Mincho&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Sans KR&quot;</span><span class="string">,</span> <span class="string">&quot;Apple Gothic&quot;</span><span class="string">,</span> <span class="string">Seoul,</span> <span class="string">&quot;Malgun Gothic&quot;</span><span class="string">,</span> <span class="string">Dotum,</span> <span class="string">sans-serif,</span> <span class="string">&quot;Roboto Slab&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Serif SC&quot;</span><span class="string">,</span> <span class="string">SimSun,</span> <span class="string">&quot;Noto Serif TC&quot;</span><span class="string">,</span> <span class="string">MingLiu,</span> <span class="string">&quot;Noto Serif HK&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Serif JP&quot;</span><span class="string">,</span> <span class="string">&quot;Yu Mincho&quot;</span><span class="string">,</span> <span class="string">&quot;MS Mincho&quot;</span><span class="string">,</span> <span class="string">&quot;Noto Serif KR&quot;</span><span class="string">,</span> <span class="string">&quot;PC Myungjo&quot;</span><span class="string">,</span> <span class="string">&quot;Shin Myungjo Neue&quot;</span><span class="string">,</span> <span class="string">Batang,</span> <span class="string">serif,</span> <span class="string">&quot;Inter&quot;</span><span class="string">,</span> <span class="string">&#x27;Quicksand&#x27;</span><span class="string">,</span> <span class="string">&#x27;Nimbus Roman No9 L&#x27;</span><span class="string">,</span> <span class="string">ui-sans-serif,</span> <span class="string">system-ui,</span> <span class="string">sans-serif,</span> <span class="string">&quot;Noto Color Emoji&quot;</span><span class="string">,</span> <span class="string">&quot;Apple Color Emoji&quot;</span><span class="string">,</span> <span class="string">&quot;Segoe UI Emoji&quot;</span><span class="string">,</span> <span class="string">&quot;Segoe UI Symbol&quot;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p>备用字体根据自行需求填写。</p>
+</div></div>
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">Tip</div>
+</div>
+<div class="callout-content"><p>建议多填备用字体，以避免部分字符显示不出的问题。</p>
+</div></div><p>保存配置文件。</p>
+<h2 id="测试样式是否生效"><a class="markdownIt-Anchor" href="#测试样式是否生效"></a> 测试样式是否生效</h2>
+<p>在项目根目录的终端中输入 <code>hexo server</code> 命令并执行，待出现 <code>localhost:4000</code> 时，进浏览器开启链接，查看样式是否生效。</p>
+<p>如生效，则可关闭该标签页，在终端中按 <code>Ctrl-C</code> 终止执行。</p>
+<h2 id="在服务器部署"><a class="markdownIt-Anchor" href="#在服务器部署"></a> 在服务器部署</h2>
+<p>此步略。</p>
+<h2 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项</h2>
+<ul>
+<li>不要在字体样式的 CSS 文件中加入 <code>body</code> 项，否则 <code>_config.butterfly.yml</code> 配置文件的字体样式会失效，且会<strong>牵连主题原本自带的 font-awesome v6 图标</strong>导致不显示！</li>
+</ul>
+<h2 id="题外话"><a class="markdownIt-Anchor" href="#题外话"></a> 题外话</h2>
+<h3 id="如何一次性引用多个自定义-css-样式"><a class="markdownIt-Anchor" href="#如何一次性引用多个自定义-css-样式"></a> 如何一次性引用多个自定义 CSS 样式？</h3>
+<p>我个人建议将多个 CSS 样式配置只写进一个文件里，这样不容易出现奇怪的问题。</p>
+<p>例如将透明样式引入 CSS，只需在行末加入以下内容。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.layout_post</span>&gt;<span class="selector-id">#post</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">75</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#aside_content</span> <span class="selector-class">.card-widget</span>, <span class="selector-id">#recent-posts</span>&gt;<span class="selector-class">.recent-post-item</span>, <span class="selector-class">.layout_page</span>&gt;<span class="selector-tag">div</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:not</span>(<span class="selector-class">.recent-posts</span>), <span class="selector-class">.layout_post</span>&gt;<span class="selector-id">#page</span>, <span class="selector-class">.layout_post</span>&gt;<span class="selector-id">#post</span>, <span class="selector-class">.read-mode</span> <span class="selector-class">.layout_post</span>&gt;<span class="selector-id">#post</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">75</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attr">--card-bg</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, .<span class="number">75</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#footer</span> &#123;</span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>, .<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="callout" data-callout="caution">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">Caution</div>
+</div>
+<div class="callout-content"><p>注意要和原本的样式间隔一行。</p>
+</div></div><h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2>
+<ul>
+<li>如何修改Hexo主题：Butterfly网站字体. Allen. <a target="_blank" rel="noopener" href="https://www.luxiyue.com/server/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9hexo%E4%B8%BB%E9%A2%98%EF%BC%9Abutterfly%E7%BD%91%E7%AB%99%E5%AD%97%E4%BD%93/">https://www.luxiyue.com/server/如何修改hexo主题：butterfly网站字体/</a></li>
+<li>Hexo中Buttefly主题美化进阶（八） | 偷掉月亮. 偷掉月亮的阿硕. <a target="_blank" rel="noopener" href="https://moonshuo.cn/posts/1481.html">https://moonshuo.cn/posts/1481.html</a>. 2022-11-25</li>
+<li>Butterfly 文檔(三) 主題配置 | Butterfly. Jerry. <a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/4aa8abbe/?highlight=css#%E5%85%A8%E5%B1%80%E5%AD%97%E9%AB%94">https://butterfly.js.org/posts/4aa8abbe/?highlight=css#全局字體</a>. 2020-05-28</li>
+<li>Butterfly 文檔(六) 進階教程 | Butterfly. Jerry. <a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/4073eda/">https://butterfly.js.org/posts/4073eda/</a>. 2020-05-28</li>
+</ul>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>中文：思源黑体，日文：源ノ角ゴシック，韩文：본고딕(本고딕)，英文别名：Source Han Sans <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>中文：思源宋体，日文：源ノ明朝，韩文：본명조(本明朝)，英文别名：Source Han Serif <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GitHub-Pages/" rel="tag"># GitHub Pages</a>
+              <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" rel="tag"># 踩坑记录</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/1986294578/" rel="prev" title="用 YAML 形式列出我喜欢的米游角色">
+                  <i class="fa fa-angle-left"></i> 用 YAML 形式列出我喜欢的米游角色
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3342541928/" rel="next" title="这段时间在 GitHub Pages 折腾博客的一些感想">
+                  这段时间在 GitHub Pages 折腾博客的一些感想 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Dora Honor</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://vercel-waline.dorahonor.me/","cssUrl":"https://unpkg.com/@waline/client@v3/dist/waline.css","commentCount":true,"pageview":false,"locale":{"placeholder":"说点什么吧（昵称和邮箱为必填项。为了你能及时收到相关回复的邮件通知，请确保邮箱的正确性！）"},"reaction":true,"emoji":["https://unpkg.com/@waline/emojis@1.1.0/weibo","https://unpkg.com/@waline/emojis@1.1.0/alus","https://unpkg.com/@waline/emojis@1.1.0/bilibili","https://unpkg.com/@waline/emojis@1.1.0/qq","https://unpkg.com/@waline/emojis@1.1.0/tieba","https://unpkg.com/@waline/emojis@1.1.0/tw-emoji","https://emoji.shojo.cn/bili/webp/乖巧宝宝","https://emoji.shojo.cn/bili/webp/乖巧宝宝%20清凉一夏","https://emoji.shojo.cn/bili/webp/原神","https://emoji.shojo.cn/bili/webp/原神-须弥","https://emoji.shojo.cn/bili/webp/原神·巡林奇遇","https://emoji.shojo.cn/bili/webp/崩坏：星穹铁道","https://emoji.shojo.cn/bili/webp/崩坏3","https://emoji.shojo.cn/bili/webp/崩坏3·光辉矢愿","https://emoji.shojo.cn/bili/webp/崩坏3·天穹流星","https://emoji.shojo.cn/bili/webp/崩坏3·终焉归始","https://emoji.shojo.cn/bili/webp/崩坏3·雷鸣彻空","https://emoji.shojo.cn/bili/webp/崩坏学园2","https://emoji.shojo.cn/bili/webp/明日方舟","https://emoji.shojo.cn/bili/webp/明日方舟音律联觉","https://emoji.shojo.cn/bili/webp/明日方舟·音律联觉-灯下定影","https://emoji.shojo.cn/bili/webp/我的世界","https://emoji.shojo.cn/bili/webp/罗小黑战记","https://emoji.shojo.cn/bili/webp/2233娘"],"requiredMeta":["nick","mail"],"el":"#waline","comment":true,"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/posts/2427732307/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<body>
+  <script src="../live2d-widget/dist/autoload.js"></script>
+</body>
+</html>
+</body>
+</html>
