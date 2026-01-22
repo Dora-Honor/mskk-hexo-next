@@ -773,8 +773,13 @@ waline:
   enable: true
 
   # Waline server address url, you should set this to your own link
-  serverURL: https://vercel-waline.dorahonor.me/
-  # serverURL: https://waline.dorahonor.me/.netlify/functions/comment
+  serverURL: https://comment.dorahonor.me/
+  # serverURL1: https://comment.dorahonor.me/
+    # UI: https://comment.dorahonor.me/ui/
+  # serverURL2: https://vercel-waline.dorahonor.me/
+    # UI: https://vercel-waline.dorahonor.me/ui/
+  # serverURL3: https://waline.dorahonor.me/.netlify/functions/comment
+    # UI: https://waline.dorahonor.me/.netlify/functions/comment/ui/
 
   # Waline library CDN url, you can set this to your preferred CDN
   # libUrl: https://unpkg.com/@waline/client@v3/dist/waline.umd.js
