@@ -939,10 +939,10 @@ markdown-it-mark@^3.0.1:
   resolved "https://registry.npmmirror.com/markdown-it-mark/-/markdown-it-mark-3.0.1.tgz"
   integrity sha512-HyxjAu6BRsdt6Xcv6TKVQnkz/E70TdGXEFHRYBGLncRE9lBFwDNLVtFojKxjJWgJ+5XxUwLaHXy+2sGBbDn+4A==
 
-markdown-it-obsidian-callouts@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.npmmirror.com/markdown-it-obsidian-callouts/-/markdown-it-obsidian-callouts-0.3.3.tgz"
-  integrity sha512-XviZR/5aFmcGVvjUv2I0TidPIkc4RzAJg3cd5N1zJe/3eh2FLLiqt0ugyBlkOyKc2ydcp/q2iUGAZomxn7al+g==
+markdown-it-obsidian-callouts@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/markdown-it-obsidian-callouts/-/markdown-it-obsidian-callouts-0.3.4.tgz#547c385c726b7b85e7aa76ab8d608cb215cd0ee9"
+  integrity sha512-v09j5LpNKOXlcjyxoGAOuhm+l+gZMzb1JCzSLbc4kz8hqRHQx04WDR7Kx1W2xvVIqtlZGFD1zOkEibX3DLXG0w==
 
 markdown-it-sub@^1.0.0:
   version "1.0.0"
